@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    image: 'registry.gitlab.com/sweetbonus/dashboard:latest'
+    container_name: dashboard-sweet
+    ports:
+        - 8001:80
+    environment:
+        XDEBUG_CONFIG: remote_host= 172.17.0.1
+    volumes:
+        - ./:/var/www/html
+

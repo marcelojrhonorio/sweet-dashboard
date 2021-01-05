@@ -1,0 +1,46 @@
+.col-centered{float: none; margin: 0 auto;}
+
+*{font-family: 'Roboto', sans-serif; -webkit-transition: all 0.1s linear; -moz-transition: all 0.1s linear; -ms-transition: all 0.13s linear; -o-transition: all 0.1s linear; transition: all 0.1s linear; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+
+
+
+body{margin: 0; padding: 0; height: 100%; max-height: 100%; background: url('../imgs/main-bg.jpg') top no-repeat; float: left; width: 100%;}
+
+/* Main */
+
+#main{padding: 40px 0;}
+#main h1{width: 90%;}
+#main h2{font-size: 22px; font-weight: 300; color: #fff; text-align: center; line-height: 38px; margin-top: 20px;}
+#main h2 strong{font-weight: 900;}
+
+#main #form-box{background: #262c4266; color: #fff; padding: 45px 25px; margin-top: 30px;}
+#main #form-box .title h3{font-size: 34px; line-height: 52px; font-weight: 900; display: inline-block; margin-bottom: 0; margin: 0; padding-bottom: 0; padding: 0;}
+#main #form-box .title p{font-size: 22px; font-weight: 200; line-height: 36px; display: inline-block; margin-top: 10px;}
+#main #form-box .title p span{color: #d67ccd; font-weight: 900;}
+#main #form-box .form-control:focus {box-shadow: none;}
+#main #form-box label{font-weight: 200; padding-left: 5px; margin-bottom: 2px;}
+#main #form-box select, #main #form-box select option {font-size: 14px; font-weight: 300; color: #333;}
+#main #form-box input{font-size: 14px; font-weight: 300; color: #333;}
+#main #form-box input[name="first_name"]{background: #fff url(../imgs/form-input-icon-1.png) no-repeat 10px center; padding-left: 30px;}
+#main #form-box input[name="email_address"]{background: #fff url(../imgs/form-input-icon-2.png) no-repeat 10px center; padding-left: 30px;}
+#main #form-box .two-inputs{padding: 0 10px;}
+#main #form-box .two-inputs .col-4, #main #form-box .two-inputs .col-8{padding: 0 5px;}
+#main #form-box input[name="phone_home"]{background: #fff url(../imgs/form-input-icon-3.png) no-repeat 10px center; padding-left: 30px;}
+#main #form-box button{background: #d67ccd; border: none; display: block; width: 100%; text-align: center; border-radius: 5px; cursor: pointer; padding: 10px 0; margin-top: 30px;}
+#main #form-box button span{font-size: 18px; font-weight: 900; color: #441a3b;}
+#main #form-box button:hover{background: #e668d9;}
+
+/* Footer */
+
+footer{background: #28223c; color: #a29bbc; text-align: center; font-size: 12px; padding: 20px 0;}
+footer a{color: #9078dd;}
+footer a:hover{color: #6f4edd; text-decoration: none;}
+
+/* Media Queries */
+
+@media(min-width: 992px){
+	#main h1{margin-top: 110px;}
+	#main h2{font-size: 28px; line-height: 42px; margin-top: 60px;}
+	#main #form-box{margin-top: 0;}
+	footer{position: absolute; bottom: -100px; width: 100%;}
+}

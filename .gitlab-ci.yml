@@ -1,0 +1,55 @@
+image: registry.gitlab.com/sweetbonus/dashboard:latest
+
+stages:
+  - testing
+#  - analysis
+  - deploy
+
+# This folder is cached between builds
+cache:
+  paths:
+    - .env
+    - vendor/
+    - storage/
+    - ci/
+
+before_script:
+  # Copy over testing configuration.
+  - cp .env.example .env
+  # Generate an application key. Re-cache.
+  - composer update
+  - php artisan key:generate
+  - php artisan config:cache
+test:
+  stage: testing
+  script:
+    # run laravel tests
+    - php vendor/bin/phpunit --coverage-text --colors=always
+
+# sonar:
+#   image: nikhuber/sonar-scanner:3.0.3.778
+#   stage: analysis
+#   dependencies: # Include the log files produced during test stage
+#     - test
+#   script:
+#     - sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.sources=. -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN
+deploy_uat:
+  stage: deploy
+  environment: uat-sweetmedia.com.br
+  script:
+    - dep deploy
+  only:
+    - develop
+
+deploy_prod:
+  stage: deploy
+  environment: sweetmedia.com.br
+  before_script:
+    - sed -e 's/uat-sweetmedia.com.br/sweetmedia.com.br/;' -i deploy.php
+    - sed -e 's/develop/master/;' -i deploy.php
+    - sed -e 's/TBMUS0TC0\/BCB6C2UMN\/nG26ty2XIScgzHkNTbU7M0uU/TBMUS0TC0\/BCBLVHG0L\/1pX7aH9DYcOpQLlHXQ77z7CH/;' -i deploy.php
+  script:
+    - dep deploy
+  only:
+    - master
+  when: manual
